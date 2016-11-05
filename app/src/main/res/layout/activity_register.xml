@@ -17,6 +17,7 @@
         android:layout_alignParentBottom="true">
 
         <Button
+            android:id="@+id/btRegister"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Register" />
@@ -39,17 +40,26 @@
             android:layout_marginBottom="40dp"/>
 
         <EditText
+            android:id="@+id/display"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Display name" />
+
+        <EditText
+            android:id="@+id/user"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Username" />
 
         <EditText
+            android:id="@+id/pass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password"/>
 
 
         <EditText
+            android:id="@+id/confirm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password Confirm" />
