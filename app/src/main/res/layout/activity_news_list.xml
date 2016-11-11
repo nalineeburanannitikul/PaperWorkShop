@@ -16,8 +16,8 @@
 
         <ImageView
             android:id="@+id/ims"
-            android:layout_width="86dp"
-            android:layout_height="75dp"
+            android:layout_width="91dp"
+            android:layout_height="67dp"
             android:src="@drawable/img"/>
 
         <ListView

@@ -39,7 +39,7 @@ public class Register extends AppCompatActivity {
         user = (EditText) findViewById(R.id.user);
         pass = (EditText) findViewById(R.id.pass);
         confirm = (EditText) findViewById(R.id.confirm);
-setListener();;
+        setListener();
     }
 
     protected void setListener(){
@@ -79,13 +79,15 @@ setListener();;
             return false;
 
         if (displayName.isEmpty()) return false;
-        return false;
+
+        return true;
     }
 
     private class Register1 extends AsyncTask<Void,Void,String> {
         private String username;
         private String password;
         private String passwordCon;
+        private String displayName;
 
         public Register1(String usernamer, String displayName, String passwordCon, String password) {
             this.username = usernamer;
@@ -94,33 +96,32 @@ setListener();;
             this.password = password;
         }
 
-        private String displayName;
-
         @Override
-        protected void onPreExecute(String s) {
-            super.onPreExecute(s);
+        protected void onPreExecute() {
+            super.onPreExecute();
 
-            try {
-                JSONObject rootobj = new JSONObject(s);
-                if (rootobj.has("result")){
-                    JSONObject resultObj = rootobj.getJSONObject("result");
-                    if (resultObj.getInt("result")==1){
-                        Toast.makeText(Register.this, resultObj.getString("result_desc") , Toast.LENGTH_SHORT)
-                                finish();
-
-                    }else {
-                        Toast.makeText(Register.this,resultObj.getString("result_desc") , Toast.LENGTH_SHORT)
-                    }
-                }
-            }catch (JSONException ex){
-
-            }
         }
 
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             Toast.makeText(Register.this, s ,Toast.LENGTH_SHORT).show();
+
+            try {
+                JSONObject rootobj = new JSONObject(s);
+                if (rootobj.has("result")){
+                    JSONObject resultObj = rootobj.getJSONObject("result");
+                    if (resultObj.getInt("result")==1){
+                        Toast.makeText(Register.this, resultObj.getString("result_desc") , Toast.LENGTH_SHORT).show();
+                        finish();
+
+                    }else {
+                        Toast.makeText(Register.this,resultObj.getString("result_desc") , Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }catch (JSONException ex){
+
+            }
         }
 
         @Override
